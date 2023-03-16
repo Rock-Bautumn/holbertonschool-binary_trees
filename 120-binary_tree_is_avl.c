@@ -1,5 +1,11 @@
 #include "binary_trees.h"
 
+/**
+ * binary_tree_is_avl - Check if the binary tree is an AVL tree
+ * @tree: The binary tree to check
+ * Return: 1/true if it is an AVL tree, 0/false if not
+*/
+
 int binary_tree_is_avl(const binary_tree_t *tree)
 {
 	bool left, right;
@@ -18,7 +24,7 @@ int binary_tree_is_avl(const binary_tree_t *tree)
 	right = binary_tree_is_avl(tree->right);
 
 	if (left && right)
-		return true;
+		return (true);
 	else
-		return false;
+		return (false);
 }
