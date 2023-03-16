@@ -2,13 +2,19 @@
 #include "binary_trees.h"
 
 
-/* If root right child doesn't exist, do nothing */
+/*
+*
+* If root right child doesn't exist, do nothing
+*
+* Root right becomes new root
+*/
 
-/* Root right becomes new root */
-
-/* We can ignore if the "old" root right child has a left child, that becomes the new right child
-of the "old" root */
-
+/**
+ * binary_tree_rotate_left - Rotates a binary search tree in a counter
+ *  clockwise direction
+ * @tree: The binary search tree to rotate
+ * Return: The newly rotated binary search tree
+*/
 binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree)
 {
 	binary_tree_t *new_root, *old_root, *dangler;
@@ -32,3 +38,4 @@ binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree)
 
 	return (new_root);
 }
+
