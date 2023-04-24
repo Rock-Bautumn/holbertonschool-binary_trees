@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stddef.h>
 #include <stdbool.h>
+#include <limits.h>
 
 
 /**
@@ -22,6 +23,8 @@ struct binary_tree_s
     struct binary_tree_s *left;
     struct binary_tree_s *right;
 };
+
+#define MAX(X, Y) ((X >= Y) ? X : Y)
 
 typedef struct binary_tree_s binary_tree_t;
 
