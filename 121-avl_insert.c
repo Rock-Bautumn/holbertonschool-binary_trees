@@ -1,8 +1,28 @@
 #include "binary_trees.h"
 
 /**
+ * avl_search - Search an AVL tree and return the node that has the value
+ * @node: The tree/subtree/node to search
+ * @value: The value to search for in the tree
+ * Return: The address of the node that stores the value, NULL if not found
+*/
+
+avl_t *avl_search(avl_t *node, int value)
+{
+	if (node == NULL)
+		return (NULL);
+	else if (node->n == value)
+		return (node);
+	else if (value < node->n)
+		return (avl_search(node->left, value));
+	else
+		return (avl_search(node->right, value));
+}
+
+/**
  * rotate_avl - Rotate the AVL tree so that it is balanced again
  * @node: The address of the pointer to the node to rotate around
+ * @value: The value that is being saved into the AVL tree
  * Return: void
  */
 void rotate_avl(avl_t **node, int value)
@@ -46,7 +66,6 @@ void rotate_avl(avl_t **node, int value)
  */
 avl_t *avl_inserter(avl_t **tree, int value)
 {
-
 	avl_t *new_node;
 
 	if (value < (*tree)->n)
@@ -95,7 +114,10 @@ avl_t *avl_insert(avl_t **tree, int value)
 		return (*tree);
 	}
 
-	new_node = avl_inserter(tree, value);
+	new_node = avl_search(*tree, value);
+
+	if (!new_node)
+		new_node = avl_inserter(tree, value);
 
 	return (new_node);
 }
