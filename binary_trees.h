@@ -45,6 +45,10 @@ binary_tree_t *binary_tree_rotate_left(binary_tree_t *tree);
 binary_tree_t *binary_tree_rotate_right(binary_tree_t *tree);
 
 int binary_tree_is_avl(const binary_tree_t *tree);
+int binary_tree_balance(const binary_tree_t *tree);
+avl_t *avl_insert(avl_t **tree, int value);
+avl_t *avl_inserter(avl_t **tree, int value);
+void rotate_avl(avl_t **node);
 
 
 
