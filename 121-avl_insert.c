@@ -5,9 +5,9 @@
  * @node: The address of the pointer to the node to rotate around
  * Return: void
  */
-void rotate_avl(avl_t **node)
+void rotate_avl(avl_t **node, int value)
 {
-	int balance, value = (*node)->n;
+	int balance;
 
 	balance = binary_tree_balance(*node);
 
@@ -34,6 +34,7 @@ void rotate_avl(avl_t **node)
 	{
 		(*node)->right = binary_tree_rotate_right((*node)->right);
 		*node = binary_tree_rotate_left(*node);
+		return;
 	}
 }
 
@@ -45,6 +46,7 @@ void rotate_avl(avl_t **node)
  */
 avl_t *avl_inserter(avl_t **tree, int value)
 {
+
 	avl_t *new_node;
 
 	if (value < (*tree)->n)
@@ -57,8 +59,7 @@ avl_t *avl_inserter(avl_t **tree, int value)
 
 		new_node = avl_inserter(&((*tree)->left), value);
 		if (new_node)
-			rotate_avl(tree);
-
+			rotate_avl(tree, value);
 		return (new_node);
 	}
 
@@ -71,10 +72,8 @@ avl_t *avl_inserter(avl_t **tree, int value)
 		}
 
 		new_node = avl_inserter(&((*tree)->right), value);
-
 		if (new_node)
-			rotate_avl(tree);
-
+			rotate_avl(tree, value);
 		return (new_node);
 	}
 	return (NULL);
