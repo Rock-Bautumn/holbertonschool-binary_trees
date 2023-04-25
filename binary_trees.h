@@ -49,6 +49,7 @@ int binary_tree_balance(const binary_tree_t *tree);
 avl_t *avl_insert(avl_t **tree, int value);
 avl_t *avl_inserter(avl_t **tree, int value);
 void rotate_avl(avl_t **node);
+avl_t *array_to_avl(int *array, size_t size);
 
 
 
